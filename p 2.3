@@ -1,0 +1,24 @@
+import React from 'react';
+import Part from './Part';
+
+const Total = ({ parts }) => {
+  const totalExercises = parts.reduce((s, p) => {
+    console.log('Current sum:', s, 'Current part:', p);
+    return s + p.exercises; // Summing up exercises
+  }, 0); // Start with 0
+
+  return <p>Number of exercises {totalExercises}</p>;
+};
+
+const Content = ({ parts }) => {
+  return (
+    <div>
+      {parts.map(part => (
+        <Part key={part.id} part={part} />
+      ))}
+      <Total parts={parts} />
+    </div>
+  );
+};
+
+export default Content;
